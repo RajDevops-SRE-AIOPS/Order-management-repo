@@ -1,0 +1,93 @@
+Interview Questions
+
+1.Branch vs Tag
+
+"A branch is a movable pointer used for ongoing development. It automatically moves to the latest commit as new commits are added. We use branches for feature development, bug fixes, and hotfixes. A tag, on the other hand, is a fixed reference to a specific commit and is mainly used to mark releases such as v1.0 or v2.0. Branches are used during development, while tags are used to identify stable release versions and support deployments or rollbacks.”
+
+
+
+Difference Between Normal Pull and Allow Unrelated Histories
+
+Command	Use Case
+git pull origin main	Normal updates from same repository
+git pull --rebase origin main	Keep clean linear history
+git pull origin main --allow-unrelated-histories	Merge two independent Git histories
+DevOps Interview Answer
+
+Question: When do you use --allow-unrelated-histories?
+
+Strong answer:
+
+"I use git pull --allow-unrelated-histories when the local repository and remote repository were initialized separately and Git cannot find a common commit history. A common example is creating a local project with commits and later connecting it to a GitHub repository that already contains an initial README or license commit. This option allows Git to merge those independent histories.”
+
+
+
+"Why do companies use Git branching workflows?"
+
+A strong answer is:
+"Git branching workflows are designed to reduce risk while allowing many developers to work in parallel. Feature branches isolate changes, pull requests and code reviews improve quality, CI pipelines validate every change automatically, branch protection prevents accidental production modifications, release and hotfix branches support controlled deployments, and tags enable fast rollbacks. Together, these practices improve collaboration, maintain code quality, and reduce production incidents while enabling teams to deliver software safely and frequently.”
+
+
+Git Merge Conflict – Interview Explanation (Step by Step)
+
+30-Second Interview Answer
+
+"A merge conflict occurs when two branches modify the same lines of the same file, and Git cannot automatically determine which change to keep. Git pauses the merge and marks the conflicting sections in the file. The developer manually resolves the conflict, stages the resolved file with git add, and completes the merge with git commit. If needed, the merge can be cancelled using git merge --abort.”
+
+
+
+Git Merge Conflict – Interview Answer
+
+Q: What is a Merge Conflict?
+
+Answer:
+
+A merge conflict happens when two developers change the same part of the same file in different branches. When Git tries to merge those branches, it cannot decide which change to keep, so it asks the developer to resolve the conflict manually.
+
+Example
+
+Suppose config.txt contains:
+
+Database = MySQL
+
+Developer A changes it to:
+
+Database = PostgreSQL
+
+Developer B changes it to:
+
+Database = MongoDB
+
+When they merge the branches:
+
+git merge feature-branch
+
+Git cannot choose between PostgreSQL and MongoDB, so it reports a merge conflict.
+
+How do you resolve it?
+Run the merge command.
+Git shows the conflicted file.
+Open the file and review both changes.
+Decide which change (or a combination) should be kept.
+Save the file.
+Run:
+git add <file>
+git commit
+
+The merge is now complete.
+
+30-Second Interview Answer
+
+"A merge conflict occurs when the same part of a file is modified differently in two branches. Git cannot automatically decide which change to keep, so it stops the merge and asks the developer to resolve the conflict manually. After resolving the conflict, we stage the file using git add and complete the merge with git commit."
+
+Follow-up Interview Question
+
+Q: How can you avoid merge conflicts?
+
+Answer:
+
+Pull the latest changes before starting work.
+Keep feature branches short-lived.
+Merge changes regularly.
+Communicate with team members when working on the same files.
+Create small, focused pull requests.
